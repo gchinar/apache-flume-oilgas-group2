@@ -1,7 +1,10 @@
 # Apache Flume: Oil & Gas Equipment Monitoring
 
 Contributors:
-<img width="934" height="406" alt="image" src="https://github.com/user-attachments/assets/6ee249a3-caed-4c4b-84b5-08ad820788b2" />
+<img width="467" height="203" alt="image" src="https://github.com/user-attachments/assets/6ee249a3-caed-4c4b-84b5-08ad820788b2" />
+
+Overview
+<img width="800" height="533" alt="image" src="https://github.com/user-attachments/assets/b6b7da4f-27bd-45d0-87c1-ad47d8b14355" />
 
 
 Group 2, Stream Processing and Analytics assignment.
