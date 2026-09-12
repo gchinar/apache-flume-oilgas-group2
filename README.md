@@ -1,5 +1,9 @@
 # Apache Flume: Oil & Gas Equipment Monitoring
 
+Contributors:
+<img width="934" height="406" alt="image" src="https://github.com/user-attachments/assets/6ee249a3-caed-4c4b-84b5-08ad820788b2" />
+
+
 Group 2, Stream Processing and Analytics assignment.
 
 A PowerShell simulator generates CSV sensor readings for four assets. Apache Flume reads the source file with an Exec Source, buffers events in a Memory Channel, and writes local files through a File Roll Sink. A Python Streamlit dashboard displays the latest readings and threshold alerts.
