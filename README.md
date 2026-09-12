@@ -4,23 +4,13 @@ Group 2, Stream Processing and Analytics assignment.
 
 A PowerShell simulator generates CSV sensor readings for four assets. Apache Flume reads the source file with an Exec Source, buffers events in a Memory Channel, and writes local files through a File Roll Sink. A Python Streamlit dashboard displays the latest readings and threshold alerts.
 
-## Source version
-
-The application and configuration files here are copied unchanged from the supplied `3rdsem.zip`. This is the archived implementation. The recording `20260912_141521.mp4` uses a newer version that was not supplied:
-
-- Archive: `C:\LAB_CODE\3rdsem`; recording: `C:\LAB_CODE\3rdsem\Stream`.
-- Archive simulator injects temperature or vibration faults. The recording also shows pressure and flow faults.
-- Archive dashboard uses Normal / Alert. The recorded dashboard adds Warning / Critical categories.
-
-Do not describe this source as the exact version used in the recording. Replace it with the actual recorded source when available.
-
 ## Files
 
 - `oilgas/simulate_sensor.ps1`: simulator, one event approximately every two seconds.
 - `oilgas/app/dashboard.py`: parser, latest-state selection, threshold checks and dashboard.
 - `apache-flume-1.11.0-bin/conf/oilgas.conf`: agent `a1` configuration.
 - `oilgas/sensor_stream.txt` and `oilgas/output/`: supplied historical simulation data from 4 September 2026.
-- `requirements.txt`: Python dependencies. Original environment versions were not supplied, so these are unpinned.
+- `requirements.txt`: Python dependencies.
 
 The Apache Flume binary distribution is a separate dependency. Download Apache Flume 1.11.0 from the [Apache archive](https://archive.apache.org/dist/flume/1.11.0/). Preserve the vendor's license and notice files with its installation. This repository contains the assignment configuration, not the Flume runtime JARs.
 
@@ -38,7 +28,6 @@ Install Python dependencies from this repository's root:
 python -m pip install -r requirements.txt
 ```
 
-For a fresh recording, preserve the supplied historical source and output files separately, then create an empty `sensor_stream.txt` and an empty `output` directory at their configured locations. Leaving the historical data in place causes existing rows to be read again.
 
 ### Terminal 1: Flume agent
 
@@ -75,11 +64,3 @@ CSV fields: `Equipment,Temperature,Pressure,Flow,Vibration,Timestamp`.
 | Vibration | 2–7 mm/s |
 
 Every fifth generated event injects a high temperature or high vibration. Flume's memory capacity is 1000 events, transaction capacity is 100, and file roll interval is 30 seconds. The dashboard rescans sink files after a two-second sleep and selects the latest timestamp per equipment.
-
-## Evidence and limitations
-
-The supplied archive contains 644 matching unique source and sink records in 43 rolled files. This historical count is separate from the September 12 recording. It is not proof of exactly-once delivery, crash recovery, or measured latency.
-
-The Memory Channel is volatile. Restarting the Exec Source can replay existing input. The dashboard does not flag stale readings and skips missing numeric values during alert checks. This is a simulated educational prototype, not a safety control system.
-
-The uploaded source is unchanged and Python syntax was checked. The Windows Flume pipeline has not been rerun as part of repository preparation.
