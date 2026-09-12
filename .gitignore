@@ -1,0 +1,9 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.DS_Store
+.env
+*.log
+# Apache Flume runtime is installed separately.
+apache-flume-1.11.0-bin/lib/
